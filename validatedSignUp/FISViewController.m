@@ -53,33 +53,64 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSMutableString *alertMessage = [[NSMutableString alloc] init];
+    NSString *alertMessage = @"";//[[NSMutableString alloc] init]; ///If it's invalid.
     
-    NSLog(@"%@", textField.text);
-    if (self.firstName == textField && [self isValidName:textField.text]) {
-        self.lastName.enabled = YES;
-        [self.lastName becomeFirstResponder];
-   
-    } else if (self.lastName == textField && [self isValidName:textField.text]) {
-        self.email.enabled = YES;
-        [self.email becomeFirstResponder];
-    
-    } else if (self.email == textField && [textField.text isEmail]) {
-        self.userName.enabled = YES;
-        [self.userName becomeFirstResponder];
-    
-    } else if (self.userName == textField && [self isValidName:textField.text]){
-        self.password.enabled = YES;
-        [self.password becomeFirstResponder];
+    NSString *userInput = textField.text;   // The one we want to switch on
+    NSArray *textFields = @[self.firstName.text,
+                            self.lastName.text,
+                            self.email.text,
+                            self.userName.text,
+                            self.password.text];
+    int currentTextfieldText = [textFields indexOfObject:userInput];
 
-    } else if (self.password == textField && [self isValidPassword:textField.text]) {
-        return YES;
+    BOOL isValidInput = [self isValidInput:textField];
+    BOOL isNOTvalidInput = !isValidInput;
+    if (isValidInput) {
+        switch (currentTextfieldText) {
+            case 0:
+                // Item 1
+                // if itsValid, enable the next and pass responder
+                self.lastName.enabled = YES;
+                [self.lastName becomeFirstResponder];
+                break;
+            case 1:
+                // Item 2
+                self.email.enabled = YES;
+                [self.email becomeFirstResponder];
+                break;
+            case 2:
+                // Item 3
+                self.userName.enabled = YES;
+                [self.userName becomeFirstResponder];
+                break;
+            case 3:
+                self.password.enabled = YES;
+                [self.password becomeFirstResponder];
+                break;
+            case 4:
+            default:
+                return YES;
+        }
+    } else if (isNOTvalidInput) {
+        switch (currentTextfieldText) {
+            case 0:
+            case 1:
+            case 3:
+                alertMessage = @"forInvalidName";
+                break;
+            case 2:
+                alertMessage = @"forInvalidEmail";
+                break;
+            case 4:
+                alertMessage = @"forInvalidPassword";
+            default:
+                break;
+        }
+    
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Input" message:self.alertMessageMenu[alertMessage] preferredStyle:UIAlertControllerStyleAlert];
+    
+        
     }
-    
-    
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Input" message:[alertMessage copy] preferredStyle:UIAlertControllerStyleAlert];
-    
     
     
     return YES;
