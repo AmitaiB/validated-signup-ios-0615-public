@@ -23,6 +23,8 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 
+@property (nonatomic, strong) NSDictionary *alertMessageMenu;
+
 - (IBAction)submitButtonTapped:(id)sender;
 
 @end
@@ -33,6 +35,9 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _alertMessageMenu = @{@"forInvalidName"     : @"You entered an invalid name. Names cannot be empty, and cannot include digits.",
+                          @"forInvalidEmail"    : @"You entered an invalid e-mail address. E-mail addresses must be of the form \"foo@example.com\".",
+                          @"forInvalidPassword" : @"You entered an invalid password. Passwords must be at least 7 characters long, and easy to guess, like, say, your birthday. Because nobody will ever guess that."};
     [self setDelegatesAndTags];
     
     [self.firstName becomeFirstResponder];
@@ -48,12 +53,34 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    NSMutableString *alertMessage = [[NSMutableString alloc] init];
+    
     NSLog(@"%@", textField.text);
-    if ([self isValidName:textField.text]) {
-        NSLog(@"it's a valid name!");
+    if (self.firstName == textField && [self isValidName:textField.text]) {
         self.lastName.enabled = YES;
         [self.lastName becomeFirstResponder];
+   
+    } else if (self.lastName == textField && [self isValidName:textField.text]) {
+        self.email.enabled = YES;
+        [self.email becomeFirstResponder];
+    
+    } else if (self.email == textField && [textField.text isEmail]) {
+        self.userName.enabled = YES;
+        [self.userName becomeFirstResponder];
+    
+    } else if (self.userName == textField && [self isValidName:textField.text]){
+        self.password.enabled = YES;
+        [self.password becomeFirstResponder];
+
+    } else if (self.password == textField && [self isValidPassword:textField.text]) {
+        return YES;
     }
+    
+    
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Input" message:[alertMessage copy] preferredStyle:UIAlertControllerStyleAlert];
+    
+    
     
     return YES;
     //(isValid)? Move to next responder : UIAlert and try again;
@@ -85,6 +112,19 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 
 #pragma mark - Helper Methods
 
+-(BOOL)isValidInput:(UITextField*)userInput
+{
+    if (userInput == self.firstName || userInput == self.lastName || userInput == self.userName) {
+        return [self isValidName:userInput.text];
+    } else if (userInput == self.email) {
+        return [self.email.text isEmail]; ///Cocoapod NSString extension, using regex check (so it's not perfect)
+    } else if (userInput == self.password) {
+        return [self isValidPassword:userInput.text];
+    } else {
+        return NO;
+    }
+}
+
 - (BOOL)isValidName:(NSString*)stringToTest
 {
     NSCharacterSet *digits = [NSCharacterSet decimalDigitCharacterSet];    
@@ -102,7 +142,6 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 {
     return (passwordToTest.length > 6);
 }
-
 
 
 
