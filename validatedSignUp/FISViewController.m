@@ -32,4 +32,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Helper Methods
+
+-(void)setAllDelegates
+{
+    self.firstName.delegate = self;
+    self.lastName.delegate = self;
+    self.email.delegate = self;
+    self.userName.delegate = self;
+    self.password.delegate = self;
+}
+
+
 @end

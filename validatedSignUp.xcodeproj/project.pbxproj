@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4230603780CE84858CC1DC0D /* libPods-validatedSignUpTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C3957F9FE05FA21A59B10B /* libPods-validatedSignUpTests.a */; };
 		D8E17A3819640AA200F1549F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E17A3719640AA200F1549F /* Foundation.framework */; };
 		D8E17A3A19640AA200F1549F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E17A3919640AA200F1549F /* CoreGraphics.framework */; };
 		D8E17A3C19640AA200F1549F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E17A3B19640AA200F1549F /* UIKit.framework */; };
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6508D6A00147611A7E6D65E2 /* Pods-validatedSignUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-validatedSignUpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-validatedSignUpTests/Pods-validatedSignUpTests.release.xcconfig"; sourceTree = "<group>"; };
+		79C3957F9FE05FA21A59B10B /* libPods-validatedSignUpTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-validatedSignUpTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C417688A818CE65C64066053 /* Pods-validatedSignUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-validatedSignUpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-validatedSignUpTests/Pods-validatedSignUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8E17A3419640AA200F1549F /* validatedSignUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = validatedSignUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E17A3719640AA200F1549F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8E17A3919640AA200F1549F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,12 +77,22 @@
 				D8E17A5719640AA200F1549F /* XCTest.framework in Frameworks */,
 				D8E17A5919640AA200F1549F /* UIKit.framework in Frameworks */,
 				D8E17A5819640AA200F1549F /* Foundation.framework in Frameworks */,
+				4230603780CE84858CC1DC0D /* libPods-validatedSignUpTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C589F0B22EE8DE6195D0C51E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C417688A818CE65C64066053 /* Pods-validatedSignUpTests.debug.xcconfig */,
+				6508D6A00147611A7E6D65E2 /* Pods-validatedSignUpTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D8E17A2B19640AA200F1549F = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +100,7 @@
 				D8E17A5C19640AA200F1549F /* validatedSignUpTests */,
 				D8E17A3619640AA200F1549F /* Frameworks */,
 				D8E17A3519640AA200F1549F /* Products */,
+				C589F0B22EE8DE6195D0C51E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +120,7 @@
 				D8E17A3919640AA200F1549F /* CoreGraphics.framework */,
 				D8E17A3B19640AA200F1549F /* UIKit.framework */,
 				D8E17A5619640AA200F1549F /* XCTest.framework */,
+				79C3957F9FE05FA21A59B10B /* libPods-validatedSignUpTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,9 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8E17A6919640AA200F1549F /* Build configuration list for PBXNativeTarget "validatedSignUpTests" */;
 			buildPhases = (
+				5012A8F519219D9ABF30B7F6 /* Check Pods Manifest.lock */,
 				D8E17A5119640AA200F1549F /* Sources */,
 				D8E17A5219640AA200F1549F /* Frameworks */,
 				D8E17A5319640AA200F1549F /* Resources */,
+				EA20A9B62F874F5C25B82D40 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,6 +262,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5012A8F519219D9ABF30B7F6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EA20A9B62F874F5C25B82D40 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-validatedSignUpTests/Pods-validatedSignUpTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D8E17A3019640AA200F1549F /* Sources */ = {
@@ -400,6 +451,7 @@
 		};
 		D8E17A6A19640AA200F1549F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C417688A818CE65C64066053 /* Pods-validatedSignUpTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/validatedSignUp.app/validatedSignUp";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -422,6 +474,7 @@
 		};
 		D8E17A6B19640AA200F1549F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6508D6A00147611A7E6D65E2 /* Pods-validatedSignUpTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/validatedSignUp.app/validatedSignUp";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -457,6 +510,7 @@
 				D8E17A6819640AA200F1549F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8E17A6919640AA200F1549F /* Build configuration list for PBXNativeTarget "validatedSignUpTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +519,7 @@
 				D8E17A6B19640AA200F1549F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
