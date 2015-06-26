@@ -2,7 +2,8 @@
 # platform :ios, '6.0'
 
 target 'validatedSignUp' do
-
+pod 'NSString-Email'
+pod 'SHEmailValidator'
 end
 
 target 'validatedSignUpTests' do

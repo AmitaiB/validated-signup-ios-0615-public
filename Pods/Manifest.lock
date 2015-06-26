@@ -2,11 +2,14 @@ PODS:
   - KIF (3.2.3):
     - KIF/XCTest (= 3.2.3)
   - KIF/XCTest (3.2.3)
+  - NSString-Email (0.0.3)
 
 DEPENDENCIES:
   - KIF (~> 3.2)
+  - NSString-Email
 
 SPEC CHECKSUMS:
   KIF: a94bffe9c97e449e44f8fa481c53243d21309e1e
+  NSString-Email: 3c1ff0ace64d7ecc289ea2a5696170c853012252
 
 COCOAPODS: 0.37.2

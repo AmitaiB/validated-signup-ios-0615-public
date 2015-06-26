@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4230603780CE84858CC1DC0D /* libPods-validatedSignUpTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C3957F9FE05FA21A59B10B /* libPods-validatedSignUpTests.a */; };
+		79FC61393EF11DA0179B7DA0 /* libPods-validatedSignUp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40F7954566B986F84FCD223 /* libPods-validatedSignUp.a */; };
 		D8E17A3819640AA200F1549F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E17A3719640AA200F1549F /* Foundation.framework */; };
 		D8E17A3A19640AA200F1549F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E17A3919640AA200F1549F /* CoreGraphics.framework */; };
 		D8E17A3C19640AA200F1549F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E17A3B19640AA200F1549F /* UIKit.framework */; };
@@ -35,7 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		431BCDED3EB6A713E844303C /* Pods-validatedSignUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-validatedSignUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-validatedSignUp/Pods-validatedSignUp.release.xcconfig"; sourceTree = "<group>"; };
 		6508D6A00147611A7E6D65E2 /* Pods-validatedSignUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-validatedSignUpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-validatedSignUpTests/Pods-validatedSignUpTests.release.xcconfig"; sourceTree = "<group>"; };
+		6BF037577EB0CC53FC97F15C /* Pods-validatedSignUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-validatedSignUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-validatedSignUp/Pods-validatedSignUp.debug.xcconfig"; sourceTree = "<group>"; };
 		79C3957F9FE05FA21A59B10B /* libPods-validatedSignUpTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-validatedSignUpTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C417688A818CE65C64066053 /* Pods-validatedSignUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-validatedSignUpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-validatedSignUpTests/Pods-validatedSignUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8E17A3419640AA200F1549F /* validatedSignUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = validatedSignUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +60,7 @@
 		D8E17A5E19640AA200F1549F /* validatedSignUpTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "validatedSignUpTests-Info.plist"; sourceTree = "<group>"; };
 		D8E17A6019640AA200F1549F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D8E17A6219640AA200F1549F /* validatedSignUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = validatedSignUpTests.m; sourceTree = "<group>"; };
+		F40F7954566B986F84FCD223 /* libPods-validatedSignUp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-validatedSignUp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 				D8E17A3A19640AA200F1549F /* CoreGraphics.framework in Frameworks */,
 				D8E17A3C19640AA200F1549F /* UIKit.framework in Frameworks */,
 				D8E17A3819640AA200F1549F /* Foundation.framework in Frameworks */,
+				79FC61393EF11DA0179B7DA0 /* libPods-validatedSignUp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +94,8 @@
 			children = (
 				C417688A818CE65C64066053 /* Pods-validatedSignUpTests.debug.xcconfig */,
 				6508D6A00147611A7E6D65E2 /* Pods-validatedSignUpTests.release.xcconfig */,
+				6BF037577EB0CC53FC97F15C /* Pods-validatedSignUp.debug.xcconfig */,
+				431BCDED3EB6A713E844303C /* Pods-validatedSignUp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -121,6 +128,7 @@
 				D8E17A3B19640AA200F1549F /* UIKit.framework */,
 				D8E17A5619640AA200F1549F /* XCTest.framework */,
 				79C3957F9FE05FA21A59B10B /* libPods-validatedSignUpTests.a */,
+				F40F7954566B986F84FCD223 /* libPods-validatedSignUp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8E17A6619640AA200F1549F /* Build configuration list for PBXNativeTarget "validatedSignUp" */;
 			buildPhases = (
+				BA15A1E2EC76EDF807799694 /* Check Pods Manifest.lock */,
 				D8E17A3019640AA200F1549F /* Sources */,
 				D8E17A3119640AA200F1549F /* Frameworks */,
 				D8E17A3219640AA200F1549F /* Resources */,
+				03BC36D28486737A88CA958D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,7 +274,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03BC36D28486737A88CA958D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-validatedSignUp/Pods-validatedSignUp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5012A8F519219D9ABF30B7F6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA15A1E2EC76EDF807799694 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -425,6 +465,7 @@
 		};
 		D8E17A6719640AA200F1549F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BF037577EB0CC53FC97F15C /* Pods-validatedSignUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -438,6 +479,7 @@
 		};
 		D8E17A6819640AA200F1549F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 431BCDED3EB6A713E844303C /* Pods-validatedSignUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
