@@ -106,15 +106,22 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
             default:
                 break;
         }
-    
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Input" message:self.alertMessageMenu[alertMessage] preferredStyle:UIAlertControllerStyleAlert];
-    
         
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Input" message:self.alertMessageMenu[alertMessage] preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okayButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *clearButton = [UIAlertAction actionWithTitle:@"Clear" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            textField.text = @"";
+        }];
+        
+        [alert addAction:okayButton];
+        [alert addAction:clearButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
     
     
     return YES;
-    //(isValid)? Move to next responder : UIAlert and try again;
 }
 
 
