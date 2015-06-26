@@ -87,9 +87,9 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 
 - (BOOL)isValidName:(NSString*)stringToTest
 {
-    NSScanner *scanner = [NSScanner scannerWithString:stringToTest];
-    NSCharacterSet *digits = [NSCharacterSet decimalDigitCharacterSet];
-    BOOL containsDigits = [scanner scanUpToCharactersFromSet:digits intoString:NULL];
+    NSCharacterSet *digits = [NSCharacterSet decimalDigitCharacterSet];    
+    BOOL hasNoDigits = [stringToTest rangeOfCharacterFromSet:digits].location == NSNotFound;
+    BOOL containsDigits = !hasNoDigits;
     
     
     if (stringToTest.length == 0 || containsDigits) {
