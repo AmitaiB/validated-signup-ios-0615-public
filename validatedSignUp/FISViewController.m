@@ -33,10 +33,11 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self setDelegatesAndLockTextFields];
+    [self setDelegatesAndTags];
     
-    [self.firstName isFirstResponder];
-    [self textFieldShouldBeginEditing:self.firstName];
+    [self.firstName becomeFirstResponder];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +46,20 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"%@", textField.text);
+    if ([self isValidName:textField.text]) {
+        NSLog(@"it's a valid name!");
+        self.lastName.enabled = YES;
+        [self.lastName becomeFirstResponder];
+    }
+    
+    return YES;
+    //(isValid)? Move to next responder : UIAlert and try again;
+}
+
+
 - (IBAction)submitButtonTapped:(id)sender
 {
     
@@ -52,7 +67,7 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 
 #pragma mark - Delegate Methods
 
--(void)setDelegatesAndLockTextFields
+-(void)setDelegatesAndTags
 {
     self.firstName.delegate = self;
     self.lastName.delegate = self;
@@ -66,6 +81,8 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
     return textField == _firstName || [textField isFirstResponder];
 }
 
+
+
 #pragma mark - Helper Methods
 
 - (BOOL)isValidName:(NSString*)stringToTest
@@ -73,6 +90,7 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
     NSScanner *scanner = [NSScanner scannerWithString:stringToTest];
     NSCharacterSet *digits = [NSCharacterSet decimalDigitCharacterSet];
     BOOL containsDigits = [scanner scanUpToCharactersFromSet:digits intoString:NULL];
+    
     
     if (stringToTest.length == 0 || containsDigits) {
         return NO;
