@@ -35,11 +35,20 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    /**
+     *  Used below for the validation scheme.
+     */
     _alertMessageMenu = @{@"forInvalidName"     : @"You entered an invalid name. Names cannot be empty, and cannot include digits.",
                           @"forInvalidEmail"    : @"You entered an invalid e-mail address. E-mail addresses must be of the form \"foo@example.com\".",
                           @"forInvalidPassword" : @"You entered an invalid password. Passwords must be at least 7 characters long, and easy to guess, like, say, your birthday. Because nobody will ever guess that."};
     [self setDelegatesAndTags];
     
+//    self.firstName.enabled = YES;
+//    self.firstName.enabled = NO;
+//    self.lastName.text,
+//    self.email.text,
+//    self.userName.text,
+//    self.password.text]
     [self.firstName becomeFirstResponder];
     
     
@@ -141,10 +150,10 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
     self.password.delegate = self;
 }
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    return textField == _firstName || [textField isFirstResponder];
-}
+//-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+//{
+//    return YES;
+//}
 
 
 
