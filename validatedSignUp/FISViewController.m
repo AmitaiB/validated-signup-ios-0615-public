@@ -70,7 +70,7 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
                             self.email.text,
                             self.userName.text,
                             self.password.text];
-    int currentTextfieldText = [textFields indexOfObject:userInput];
+    NSInteger currentTextfieldText = [textFields indexOfObject:userInput];
 
     BOOL isValidInput = [self isValidInput:textField];
     BOOL isNOTvalidInput = !isValidInput;
@@ -97,6 +97,7 @@ http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
                 [self.password becomeFirstResponder];
                 break;
             case 4:
+                self.submitButton.enabled = YES;
             default:
                 return YES;
         }
